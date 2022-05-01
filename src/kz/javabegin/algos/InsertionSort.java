@@ -5,15 +5,15 @@ public class InsertionSort {
     public static void insertion() {
         int[] arr = {20, 35, -5, 3, 45, -22, 1};
 
-        for(int firstUnsortedIndex = 1; firstUnsortedIndex < arr.length; firstUnsortedIndex++) {
-            int current = arr[firstUnsortedIndex];
-            int lastSortedIndex = firstUnsortedIndex - 1;
+        for (int i = 1; i < arr.length; i++) {
+            int currentValue = arr[i];
 
-            while (lastSortedIndex >= 0 && current < arr[lastSortedIndex]){
-                arr[lastSortedIndex + 1] = arr[lastSortedIndex];
-                lastSortedIndex--;
+            int j = i - 1;
+            while (j >= 0 && arr[j] > currentValue) {
+                arr[j + 1] = arr[j];
+                j--;
             }
-            arr[lastSortedIndex + 1] = current;
+            arr[j + 1] = currentValue;
         }
 
         for(int i = 0; i < arr.length; i++) {
