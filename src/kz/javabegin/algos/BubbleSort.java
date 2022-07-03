@@ -3,13 +3,17 @@ package kz.javabegin.algos;
 public class BubbleSort {
 
     public static void bubble() {
-
-        int[] arr = {20, 35, -5, 3, 45, -22, 1};
-
-        for(int lastUnsortedIndex = arr.length - 1; lastUnsortedIndex > 0; lastUnsortedIndex--) {
-            for(int i = 0; i < lastUnsortedIndex; i++){
-                if (arr[i] > arr[i + 1]){
-                    swap(arr, i, i + 1);
+        int[] arr = {20, 35, -5, 3, 45, -22, 5};
+        boolean sorted = false;
+        int temp;
+        while (!sorted) {
+            sorted = true;
+            for (int i = 0; i < arr.length - 1; i++) {
+                if (arr[i] > arr[i + 1]) {
+                    temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+                    sorted = false;
                 }
             }
         }
@@ -19,13 +23,4 @@ public class BubbleSort {
         }
     }
 
-    public static void swap(int[] arr, int i, int j) {
-        if (i == j) {
-            return;
-        }
-
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
 }
