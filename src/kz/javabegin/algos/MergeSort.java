@@ -3,55 +3,57 @@ package kz.javabegin.algos;
 public class MergeSort {
 
     public static void mergeSort(int[] arr) {
+        int arrLen = arr.length;
 
-        int arrLength = arr.length;
-
-        if (arrLength < 2) {
+        if (arrLen < 2) {
             return;
         }
 
-        int middle = arrLength / 2;
-        int[] leftHalf = new int[middle];
-        int[] rightHalf = new int[arrLength - middle];
+        int middle = arrLen / 2;
 
-        for(int i = 0; i < middle; i++) {
-            leftHalf[i] = arr[i];
-        }
-        for(int i = middle; i < arrLength; i++) {
-            rightHalf[i - middle] = arr[i];
+        int[] leftArray = new int[middle];
+        int[] rightArray = new int[arrLen - middle];
+
+        for (int i = 0; i < middle; i++) {
+            leftArray[i] = arr[i];
         }
 
-        mergeSort(leftHalf);
-        mergeSort(rightHalf);
+        for (int i = middle; i < arrLen; i++) {
+            rightArray[i - middle] = arr[i];
+        }
 
-        merge(arr, leftHalf, rightHalf);
+        mergeSort(leftArray);
+        mergeSort(rightArray);
+
+        merge(arr, leftArray, rightArray);
     }
 
-    public static void merge(int[] arr, int[] leftArr, int[] rightArr){
-        int leftLength = leftArr.length;
-        int rightLength = rightArr.length;
+    public static void merge(int[] arr, int[] leftArray, int[] rightArray) {
+        int leftLen = leftArray.length;
+        int rightLen = rightArray.length;
 
         int i = 0, j = 0, k = 0;
 
-        while (i < leftLength && j < rightLength) {
-            if (leftArr[i] <= rightArr[j]) {
-                arr[k] = leftArr[i];
+        while (i < leftLen && j < rightLen) {
+            if (leftArray[i] < rightArray[j]) {
+                arr[k] = leftArray[i];
                 i++;
             }
             else {
-                 arr[k] = rightArr[j];
-                 j++;
+                arr[k] = rightArray[j];
+                j++;
             }
             k++;
         }
 
-        while (i < leftLength) {
-            arr[k] = leftArr[i];
+        while (i < leftLen) {
+            arr[k] = leftArray[i];
             i++;
-            j++;
+            k++;
         }
-        while (j < rightLength) {
-            arr[k] = rightArr[j];
+
+        while (j < rightLen) {
+            arr[k] = rightArray[j];
             j++;
             k++;
         }

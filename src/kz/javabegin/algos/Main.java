@@ -3,11 +3,12 @@ package kz.javabegin.algos;
 public class Main {
 
     public static void main(String[] args) {
-        new BubbleSort().bubble();
+        int[] arr = {34, 3, 5, -4, 12, 4, -9, 1};
+        QuickSort.quickSort(arr, 0, arr.length - 1);
 
-//        for(int i = 0; i < arr.length; i++) {
-//            System.out.println(arr[i]);
-//        }
+        for(int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
+        }
 
 //        new InsertionSort().insertion();
     }
